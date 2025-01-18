@@ -1,5 +1,5 @@
 import matplotlib.pyplot as plt
-import numpy as np
+import numpy      as np
 import math
 #from matplotlib.animation import FuncAnimation
 from scipy.optimize import curve_fit
@@ -23,10 +23,10 @@ a = subsystem('magnon', 2*pi*0.8*10**6)
 b = subsystem('pump induce magnon', 2*pi*0.4*10**6)
 c = subsystem('cavity photon', 2*pi*2.33*10**6)
 
-omega = 2 * math.pi * np.linspace(-0.2*10**9, 0.2*10**9, 401)
-omega_m = 2 * math.pi * np.linspace(-0.2*10**9, 0.2*10**9, 301)
-omega_c = 0  - 1j*c.damp
-omega_d = 0  - 1j*b.damp
+omega   = 2 *  math.pi * np.linspace(-0.2*10**9, 0.2*10**9, 401)
+omega_m = 2 *  math.pi * np.linspace(-0.2*10**9, 0.2*10**9, 301)
+omega_c = 0 - 1j       * c .damp
+omega_d = 0 - 1j       * b .damp
 
 # Create a meshgrid for omega and omega_k
 omega, omega_m = np.meshgrid(omega, omega_m)
@@ -40,10 +40,10 @@ def S21_value(omega_group, omega_d , g , g_d , g_c ):
 S21 = S21_value((omega , omega_m) , omega_d , g , g_d , g_c )
 
 # Flatten the data for fitting
-omega_flat = omega.ravel()
-omega_m_flat = omega_m.ravel()
-S21_flat_real = np.real(S21).ravel()  # 提取實部
-S21_flat_imag = np.imag(S21).ravel()  # 提取虛部
+omega_flat    = omega.ravel()
+omega_m_flat  = omega_m.ravel()
+S21_flat_real = np.real(S21).ravel() # 提取實部
+S21_flat_imag = np.imag(S21).ravel() # 提取虛部
 
 # use curve_fit to fitting data in real part and image part simultaneously
 def S21_value_real_imag(omega_group, omega_d, g, g_d, g_c):
@@ -76,7 +76,7 @@ S21_fit = S21_value((omega1, omega_m1), *popt)
 
 #plot fitting and orignal
 #plot fitting and orignal
-print(f'treu: {omega_d:.2e}, {g:.2e}, {g_d:.2e}, {g_c:.2e}')
+print(f'treu: {omega_d:.2e}, {g:.2e}, {g_d:.2e}, {g_c:.2e}') 
 print(f'fitting: {popt}')
 plt.figure(figsize=(10, 4))
 
