@@ -4,7 +4,7 @@ import math
 #from matplotlib.animation import FuncAnimation
 from scipy.optimize import curve_fit
 
-pi = math.pi
+pi = math.pi # testing
 
 class subsystem:
 
